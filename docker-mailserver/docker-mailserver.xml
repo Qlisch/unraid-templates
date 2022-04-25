@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Docker-Mailserver</Name>
+  <Repository>mailserver/docker-mailserver:latest</Repository>
+  <Registry>https://hub.docker.com/r/mailserver/docker-mailserver</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project>https://github.com/docker-mailserver/docker-mailserver</Project>
+  <Overview>A production-ready fullstack but simple mail server (SMTP, IMAP, LDAP, Antispam, Antivirus, etc.). Only configuration files, no SQL database. Keep it simple and versioned. Easy to deploy and upgrade.&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;h3&amp;gt; Preperations &amp;lt;/h3&amp;gt;&#xD;
+This short guide will help you to set up a mailserver. &amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&#xD;
+To keep the mailserver running, there are some important points to consider, like at least one configured mail account, SSL type, hostname, etc. &#xD;
+&amp;lt;br&amp;gt;If these points are missing, they will be mentioned in the Docker logs to simplify troubleshooting.&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;Make sure, you got an domain and a static IP adress to setup your mailserver. &amp;lt;br&amp;gt; MX and A DNS entries are needed. After that, portforward the mentioned ports in your router.&#xD;
+&amp;lt;h3&amp;gt; Initial steps: &amp;lt;/h3&amp;gt;&#xD;
+&#xD;
+The following placeholders will be used: &amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt; user &amp;lt;/b&amp;gt; is the mail account you create. &#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt; example.com &amp;lt;/b&amp;gt; is the domain you are using.&#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt; mail.example.com &amp;lt;/b&amp;gt;is the FQDN of the mailserver.&#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt; password &amp;lt;/b&amp;gt;is the password for your mail account.&amp;lt;/b&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;1. At first, setup the &amp;lt;b&amp;gt; environment variables &amp;lt;/b&amp;gt; and change &amp;lt;b&amp;gt;--hostname mail.example.com &amp;lt;/b&amp;gt; in the &amp;lt;b&amp;gt; Extra Parameters (advanced view)&amp;lt;/b&amp;gt; as needed. &#xD;
+&amp;lt;br&amp;gt; Choose custom &amp;lt;b&amp;gt; Network Type &amp;lt;/b&amp;gt; and set an fixed IP Adress. (didn't tested other options)&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;2. Create an e-mail account by starting the container with &amp;lt;b&amp;gt;Post arguments &amp;lt;/b&amp;gt; (advanced view):&#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt;setup email add user@example.com 'password'&amp;lt;/b&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt;setup email add admin@company.org 'Ch33rs#M8!' &amp;lt;/b&amp;gt; (for example)&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;3. &amp;lt;b&amp;gt; Remove the post arguments. &amp;lt;/b&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;4. Start container and check the logs.&#xD;
+&amp;lt;br&amp;gt;Optional and recommended: Open Container Console and type in...&#xD;
+&amp;lt;br&amp;gt; &amp;lt;b&amp;gt;setup config dkim&amp;lt;/b&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;5. Try to connect to the server with an e-mail client.&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;6. Test sending and recieving mails &amp;lt;br&amp;gt;&#xD;
+Optional: If everything works, you can enable &amp;lt;b&amp;gt;Fail2Ban&amp;lt;/b&amp;gt; in the environment variables&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;For further informations, visit the extended documention:&#xD;
+&amp;lt;br&amp;gt; https://docker-mailserver.github.io/docker-mailserver/edge/</Overview>
+  <Category>Network:Other</Category>
+  <WebUI/>
+  <TemplateURL/>
+  <Icon>https://avatars.githubusercontent.com/u/76868633?s=200&amp;amp;v=4</Icon>
+  <ExtraParams>--hostname mail.example.com --restart always --cap-add=NET_ADMIN --cap-add=SYS_PTRACE</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1650878671</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>A production-ready fullstack but simple mail server (SMTP, IMAP, LDAP, Antispam, Antivirus, etc.). Only configuration files, no SQL database. Keep it simple and versioned. Easy to deploy and upgrade.&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;h3&amp;gt; Preperations &amp;lt;/h3&amp;gt;&#xD;
+This short guide will help you to set up a mailserver. &amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&#xD;
+To keep the mailserver running, there are some important points to consider, like at least one configured mail account, SSL type, hostname, etc. &#xD;
+&amp;lt;br&amp;gt;If these points are missing, they will be mentioned in the Docker logs to simplify troubleshooting.&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;Make sure, you got an domain and a static IP adress to setup your mailserver. &amp;lt;br&amp;gt; MX and A DNS entries are needed. After that, portforward the mentioned ports in your router.&#xD;
+&amp;lt;h3&amp;gt; Initial steps: &amp;lt;/h3&amp;gt;&#xD;
+&#xD;
+The following placeholders will be used: &amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt; user &amp;lt;/b&amp;gt; is the mail account you create. &#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt; example.com &amp;lt;/b&amp;gt; is the domain you are using.&#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt; mail.example.com &amp;lt;/b&amp;gt;is the FQDN of the mailserver.&#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt; password &amp;lt;/b&amp;gt;is the password for your mail account.&amp;lt;/b&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;1. At first, setup the &amp;lt;b&amp;gt; environment variables &amp;lt;/b&amp;gt; and change &amp;lt;b&amp;gt;--hostname mail.example.com &amp;lt;/b&amp;gt; in the &amp;lt;b&amp;gt; Extra Parameters (advanced view)&amp;lt;/b&amp;gt; as needed. &#xD;
+&amp;lt;br&amp;gt; Choose custom &amp;lt;b&amp;gt; Network Type &amp;lt;/b&amp;gt; and set an fixed IP Adress. (didn't tested other options)&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;2. Create an e-mail account by starting the container with &amp;lt;b&amp;gt;Post arguments &amp;lt;/b&amp;gt; (advanced view):&#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt;setup email add user@example.com 'password'&amp;lt;/b&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&amp;lt;b&amp;gt;setup email add admin@company.org 'Ch33rs#M8!' &amp;lt;/b&amp;gt; (for example)&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;3. &amp;lt;b&amp;gt; Remove the post arguments. &amp;lt;/b&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;4. Start container and check the logs.&#xD;
+&amp;lt;br&amp;gt;Optional and recommended: Open Container Console and type in...&#xD;
+&amp;lt;br&amp;gt; &amp;lt;b&amp;gt;setup config dkim&amp;lt;/b&amp;gt;&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;5. Try to connect to the server with an e-mail client.&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;6. Test sending and recieving mails &amp;lt;br&amp;gt;&#xD;
+Optional: If everything works, you can enable &amp;lt;b&amp;gt;Fail2Ban&amp;lt;/b&amp;gt; in the environment variables&#xD;
+&amp;lt;br&amp;gt;&#xD;
+&amp;lt;br&amp;gt;For further informations, visit the extended documention:&#xD;
+&amp;lt;br&amp;gt; https://docker-mailserver.github.io/docker-mailserver/edge/</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>25</HostPort>
+        <ContainerPort>25</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>143</HostPort>
+        <ContainerPort>143</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>465</HostPort>
+        <ContainerPort>465</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>587</HostPort>
+        <ContainerPort>587</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>993</HostPort>
+        <ContainerPort>993</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>4190</HostPort>
+        <ContainerPort/>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/dms/mail-data/</HostDir>
+      <ContainerDir>/var/mail/</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/dms/mail-state/</HostDir>
+      <ContainerDir>/var/mail-state/</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/dms/mail-log/</HostDir>
+      <ContainerDir>/var/log/mail/</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/dms/config/</HostDir>
+      <ContainerDir>/tmp/docker-mailserver/</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir/>
+      <ContainerDir>/etc/letsencrypt/live/</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir/>
+      <ContainerDir>SSL_KEY_PATH</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/etc/localtime</HostDir>
+      <ContainerDir>/etc/localtime</ContainerDir>
+      <Mode>ro</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value/>
+      <Name>SSL_TYPE</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>SSL_CERT_PATH</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>1</Value>
+      <Name>ENABLE_POSTGREY</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>0</Value>
+      <Name>ENABLE_FAIL2BAN</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>1</Value>
+      <Name>ENABLE_CLAMAV</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>10240000</Value>
+      <Name>POSTFIX_MESSAGE_SIZE_LIMIT</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>1</Value>
+      <Name>ENABLE_SPAMASSASSIN</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>1</Value>
+      <Name>ONE_DIR</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>1</Value>
+      <Name>SPAMASSASSIN_SPAM_TO_INBOX</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>1</Value>
+      <Name>ENABLE_MANAGESIEVE</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="Port: SMTP" Target="25" Default="25" Mode="tcp" Description="SMTP  (explicit TLS =&amp;gt; STARTTLS) Port" Type="Port" Display="always" Required="true" Mask="false">25</Config>
+  <Config Name="Port: IMAP4" Target="143" Default="143" Mode="tcp" Description="IMAP4 (explicit TLS =&amp;gt; STARTTLS) Port" Type="Port" Display="always" Required="true" Mask="false">143</Config>
+  <Config Name="Port: ESMTP" Target="465" Default="465" Mode="tcp" Description="ESMTP (implicit TLS) Port" Type="Port" Display="always" Required="true" Mask="false">465</Config>
+  <Config Name="Port: ESMTP (SSL)" Target="587" Default="587" Mode="tcp" Description="ESMTP (explicit TLS =&amp;gt; STARTTLS) Port" Type="Port" Display="always" Required="true" Mask="false">587</Config>
+  <Config Name="Port: IMAP4 (SSL)" Target="993" Default="993" Mode="tcp" Description="IMAP4 (implicit TLS) Port" Type="Port" Display="always" Required="true" Mask="false">993</Config>
+  <Config Name="Mails" Target="/var/mail/" Default="/mnt/user/appdata/dms/mail-data/" Mode="rw" Description="/var/mail/" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/dms/mail-data/</Config>
+  <Config Name="Mail state" Target="/var/mail-state/" Default="/mnt/user/appdata/dms/mail-state/" Mode="rw" Description="/var/mail-state/" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/dms/mail-state/</Config>
+  <Config Name="Log files" Target="/var/log/mail/" Default="/mnt/user/appdata/dms/mail-log/" Mode="rw" Description="/var/log/mail/" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/dms/mail-log/</Config>
+  <Config Name="Config" Target="/tmp/docker-mailserver/" Default="/mnt/user/appdata/dms/config/" Mode="rw" Description="/tmp/docker-mailserver/" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/dms/config/</Config>
+  <Config Name="SSL Type" Target="SSL_TYPE" Default="" Mode="" Description="&amp;lt;b&amp;gt;empty&amp;lt;/b&amp;gt; =&amp;gt; SSL disabled &amp;lt;b&amp;gt; (NOT recommended)&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt; &#13;&#10;&amp;lt;b&amp;gt;letsencrypt&amp;lt;/b&amp;gt; =&amp;gt; Enables Let's Encrypt certificates &amp;lt;b&amp;gt; (/etc/letsencrypt/live/example.com/) &amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&#13;&#10;&amp;lt;b&amp;gt;custom&amp;lt;/b&amp;gt; =&amp;gt; Enables custom certificates &amp;lt;br&amp;gt;&#13;&#10;&amp;lt;b&amp;gt;manual&amp;lt;/b&amp;gt; =&amp;gt; Let's you manually specify locations of your SSL certificates for non-standard cases &amp;lt;br&amp;gt;&#13;&#10;&amp;lt;b&amp;gt;self-signed&amp;lt;/b&amp;gt;=&amp;gt; Enables self-signed certificates&#13;&#10;&#13;&#10;&amp;lt;br&amp;gt; &amp;lt;br&amp;gt; If &amp;lt;b&amp;gt;emtpy&amp;lt;/b&amp;gt; is &amp;lt;b&amp;gt; not &amp;lt;/b&amp;gt; choosen, go to =&amp;gt; Show more settings..." Type="Variable" Display="always" Required="false" Mask="false"/>
+  <Config Name="Mount SSL Path" Target="/etc/letsencrypt/live/" Default="" Mode="rw" Description="&amp;lt;b&amp;gt;Mounting path&amp;lt;/b&amp;gt; where certs are stored&#13;&#10;&amp;lt;br&amp;gt;If &amp;lt;b&amp;gt;letsencrypt&amp;lt;/b&amp;gt; is choosen as &amp;lt;b&amp;gt;SSL Type&amp;lt;/b&amp;gt;, then path structure &amp;lt;b&amp;gt;must&amp;lt;/b&amp;gt; look like this:&#13;&#10;&amp;lt;br&amp;gt; Host: /etc/letsencrypt/live/example.com/cert.files&#13;&#10;&amp;lt;br&amp;gt; Container: /etc/letsencrypt/live/" Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Key path" Target="SSL_KEY_PATH" Default="" Mode="rw" Description=" This is only supported with &amp;lt;b&amp;gt;`SSL_TYPE=manual`&amp;lt;/b&amp;gt;.&#13;&#10;&amp;lt;br&amp;gt; Provide the path to your &amp;lt;b&amp;gt;key&amp;lt;/b&amp;gt; file that you've mounted access to within the container." Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Cert Path" Target="SSL_CERT_PATH" Default="" Mode="" Description=" This is only supported with &amp;lt;b&amp;gt;`SSL_TYPE=manual`&amp;lt;/b&amp;gt;.&#13;&#10;&amp;lt;br&amp;gt; Provide the path to your &amp;lt;b&amp;gt;cert&amp;lt;/b&amp;gt; file that you've mounted access to within the container." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Postgrey" Target="ENABLE_POSTGREY" Default="0" Mode="" Description="Greylist&#13;&#10;&amp;lt;br&amp;gt; 1 = Enable&#13;&#10;&amp;lt;br&amp;gt; 0 = Disable" Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+  <Config Name="Fail2Ban" Target="ENABLE_FAIL2BAN" Default="0" Mode="" Description="Fail2Ban&#13;&#10;&amp;lt;br&amp;gt; 1 = Enable&#13;&#10;&amp;lt;br&amp;gt; 0 = Disable" Type="Variable" Display="advanced" Required="false" Mask="false">0</Config>
+  <Config Name="ClamAV" Target="ENABLE_CLAMAV" Default="1" Mode="" Description="ClamAV&#13;&#10;&amp;lt;br&amp;gt; 1 = Enable&#13;&#10;&amp;lt;br&amp;gt; 0 = Disable" Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+  <Config Name="Max mail size" Target="POSTFIX_MESSAGE_SIZE_LIMIT" Default="10240000" Mode="" Description="&#13;&#10;empty =&amp;gt; 10240000 (~10 MB)" Type="Variable" Display="advanced" Required="false" Mask="false">10240000</Config>
+  <Config Name="Localtime" Target="/etc/localtime" Default="/etc/localtime" Mode="ro" Description="Localtime" Type="Path" Display="advanced" Required="false" Mask="false">/etc/localtime</Config>
+  <Config Name="SPAMASSASSIN" Target="ENABLE_SPAMASSASSIN" Default="1" Mode="" Description="Spamassassin&#13;&#10;&amp;lt;br&amp;gt; 1 = Enable&#13;&#10;&amp;lt;br&amp;gt; 0 = Disable" Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+  <Config Name="Single state directory" Target="ONE_DIR" Default="1" Mode="" Description="0 =&amp;gt; mail state in default directories&#13;&#10;&amp;lt;br&amp;gt; 1 =&amp;gt; consolidate all states into a single directory (`/var/mail-state`) to allow persistence using docker volumes" Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+  <Config Name="Spam to inbox" Target="SPAMASSASSIN_SPAM_TO_INBOX" Default="0" Mode="" Description="deliver spam messages in the inbox&#13;&#10;&amp;lt;br&amp;gt; 1 = Enable&#13;&#10;&amp;lt;br&amp;gt; 0 = Disable" Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+  <Config Name="Port: Managesieve" Target="" Default="4190" Mode="tcp" Description="Managesieve" Type="Port" Display="advanced" Required="false" Mask="false">4190</Config>
+  <Config Name="Managesieve" Target="ENABLE_MANAGESIEVE" Default="0" Mode="" Description="Managesieve&#13;&#10;&amp;lt;br&amp;gt; 1 = Enable&#13;&#10;&amp;lt;br&amp;gt; 0 = Disable" Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
+</Container>
