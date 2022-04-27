@@ -7,7 +7,7 @@
   <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
-  <Support/>
+  <Support>https://forums.unraid.net/topic/122875-support-docker-mailserver/</Support>
   <Project>https://github.com/docker-mailserver/docker-mailserver</Project>
   <Overview>A production-ready fullstack but simple mail server (SMTP, IMAP, LDAP, Antispam, Antivirus, etc.). Only configuration files, no SQL database. Keep it simple and versioned. Easy to deploy and upgrade.&#xD;
 &amp;lt;br&amp;gt;&#xD;
