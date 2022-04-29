@@ -151,7 +151,7 @@ Optional: If everything works, you can enable &amp;lt;b&amp;gt;Fail2Ban&amp;lt;/
     </Volume>
     <Volume>
       <HostDir/>
-      <ContainerDir>/etc/letsencrypt/live/</ContainerDir>
+      <ContainerDir>/etc/letsencrypt/</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
     <Volume>
