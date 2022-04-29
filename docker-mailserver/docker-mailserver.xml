@@ -53,7 +53,7 @@ Optional: If everything works, you can enable &amp;lt;b&amp;gt;Fail2Ban&amp;lt;/
   <ExtraParams>--hostname mail.example.com --restart always --cap-add=NET_ADMIN --cap-add=SYS_PTRACE</ExtraParams>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1650878671</DateInstalled>
+  <DateInstalled>1651251277</DateInstalled>
   <DonateText/>
   <DonateLink/>
   <Description>A production-ready fullstack but simple mail server (SMTP, IMAP, LDAP, Antispam, Antivirus, etc.). Only configuration files, no SQL database. Keep it simple and versioned. Easy to deploy and upgrade.&#xD;
@@ -123,7 +123,7 @@ Optional: If everything works, you can enable &amp;lt;b&amp;gt;Fail2Ban&amp;lt;/
       </Port>
       <Port>
         <HostPort>4190</HostPort>
-        <ContainerPort/>
+        <ContainerPort>4190</ContainerPort>
         <Protocol>tcp</Protocol>
       </Port>
     </Publish>
@@ -151,12 +151,7 @@ Optional: If everything works, you can enable &amp;lt;b&amp;gt;Fail2Ban&amp;lt;/
     </Volume>
     <Volume>
       <HostDir/>
-      <ContainerDir>/etc/letsencrypt/live/</ContainerDir>
-      <Mode>rw</Mode>
-    </Volume>
-    <Volume>
-      <HostDir/>
-      <ContainerDir>SSL_KEY_PATH</ContainerDir>
+      <ContainerDir>/etc/letsencrypt/</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
     <Volume>
@@ -169,6 +164,11 @@ Optional: If everything works, you can enable &amp;lt;b&amp;gt;Fail2Ban&amp;lt;/
     <Variable>
       <Value/>
       <Name>SSL_TYPE</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value/>
+      <Name>SSL_KEY_PATH</Name>
       <Mode/>
     </Variable>
     <Variable>
@@ -228,9 +228,9 @@ Optional: If everything works, you can enable &amp;lt;b&amp;gt;Fail2Ban&amp;lt;/
   <Config Name="Log files" Target="/var/log/mail/" Default="/mnt/user/appdata/dms/mail-log/" Mode="rw" Description="/var/log/mail/" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/dms/mail-log/</Config>
   <Config Name="Config" Target="/tmp/docker-mailserver/" Default="/mnt/user/appdata/dms/config/" Mode="rw" Description="/tmp/docker-mailserver/" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/dms/config/</Config>
   <Config Name="SSL Type" Target="SSL_TYPE" Default="" Mode="" Description="&amp;lt;b&amp;gt;empty&amp;lt;/b&amp;gt; =&amp;gt; SSL disabled &amp;lt;b&amp;gt; (NOT recommended)&amp;lt;/b&amp;gt;&amp;lt;br&amp;gt; &#13;&#10;&amp;lt;b&amp;gt;letsencrypt&amp;lt;/b&amp;gt; =&amp;gt; Enables Let's Encrypt certificates &amp;lt;b&amp;gt; (/etc/letsencrypt/live/example.com/) &amp;lt;/b&amp;gt;&amp;lt;br&amp;gt;&#13;&#10;&amp;lt;b&amp;gt;custom&amp;lt;/b&amp;gt; =&amp;gt; Enables custom certificates &amp;lt;br&amp;gt;&#13;&#10;&amp;lt;b&amp;gt;manual&amp;lt;/b&amp;gt; =&amp;gt; Let's you manually specify locations of your SSL certificates for non-standard cases &amp;lt;br&amp;gt;&#13;&#10;&amp;lt;b&amp;gt;self-signed&amp;lt;/b&amp;gt;=&amp;gt; Enables self-signed certificates&#13;&#10;&#13;&#10;&amp;lt;br&amp;gt; &amp;lt;br&amp;gt; If &amp;lt;b&amp;gt;emtpy&amp;lt;/b&amp;gt; is &amp;lt;b&amp;gt; not &amp;lt;/b&amp;gt; choosen, go to =&amp;gt; Show more settings..." Type="Variable" Display="always" Required="false" Mask="false"/>
-  <Config Name="Mount SSL Path" Target="/etc/letsencrypt/live/" Default="" Mode="rw" Description="&amp;lt;b&amp;gt;Mounting path&amp;lt;/b&amp;gt; where certs are stored&#13;&#10;&amp;lt;br&amp;gt;If &amp;lt;b&amp;gt;letsencrypt&amp;lt;/b&amp;gt; is choosen as &amp;lt;b&amp;gt;SSL Type&amp;lt;/b&amp;gt;, then path structure &amp;lt;b&amp;gt;must&amp;lt;/b&amp;gt; look like this:&#13;&#10;&amp;lt;br&amp;gt; Host: /etc/letsencrypt/live/example.com/cert.files&#13;&#10;&amp;lt;br&amp;gt; Container: /etc/letsencrypt/live/" Type="Path" Display="advanced" Required="false" Mask="false"/>
-  <Config Name="Key path" Target="SSL_KEY_PATH" Default="" Mode="rw" Description=" This is only supported with &amp;lt;b&amp;gt;`SSL_TYPE=manual`&amp;lt;/b&amp;gt;.&#13;&#10;&amp;lt;br&amp;gt; Provide the path to your &amp;lt;b&amp;gt;key&amp;lt;/b&amp;gt; file that you've mounted access to within the container." Type="Path" Display="advanced" Required="false" Mask="false"/>
-  <Config Name="Cert Path" Target="SSL_CERT_PATH" Default="" Mode="" Description=" This is only supported with &amp;lt;b&amp;gt;`SSL_TYPE=manual`&amp;lt;/b&amp;gt;.&#13;&#10;&amp;lt;br&amp;gt; Provide the path to your &amp;lt;b&amp;gt;cert&amp;lt;/b&amp;gt; file that you've mounted access to within the container." Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Mount SSL Path" Target="/etc/letsencrypt/" Default="" Mode="rw" Description="&amp;lt;b&amp;gt;Mounting path&amp;lt;/b&amp;gt; where certs are stored&#13;&#10;&amp;lt;br&amp;gt;If &amp;lt;b&amp;gt;letsencrypt&amp;lt;/b&amp;gt; is choosen as &amp;lt;b&amp;gt;SSL Type&amp;lt;/b&amp;gt;, then path structure &amp;lt;b&amp;gt;must&amp;lt;/b&amp;gt; look like this:&#13;&#10;&amp;lt;br&amp;gt; Host: /mnt/user/appdata/.../letsencrypt/&#13;&#10;&amp;lt;br&amp;gt; Container: /etc/letsencrypt/" Type="Path" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Key path" Target="SSL_KEY_PATH" Default="" Mode="" Description=" This is only supported with &amp;lt;b&amp;gt;`SSL_TYPE=manual`&amp;lt;/b&amp;gt;.&#13;&#10;&amp;lt;br&amp;gt; Provide the path to your &amp;lt;b&amp;gt;key&amp;lt;/b&amp;gt; file that you've mounted access to within the container.&#13;&#10;&amp;lt;br&amp;gt;Example: /etc/letsencrypt/live/example.com/privkey.pem" Type="Variable" Display="advanced" Required="false" Mask="false"/>
+  <Config Name="Cert Path" Target="SSL_CERT_PATH" Default="" Mode="" Description=" This is only supported with &amp;lt;b&amp;gt;`SSL_TYPE=manual`&amp;lt;/b&amp;gt;.&#13;&#10;&amp;lt;br&amp;gt; Provide the path to your &amp;lt;b&amp;gt;cert&amp;lt;/b&amp;gt; file that you've mounted access to within the container.&#13;&#10;&amp;lt;br&amp;gt;Example: /etc/letsencrypt/live/example.com/fullchain.pem" Type="Variable" Display="advanced" Required="false" Mask="false"/>
   <Config Name="Postgrey" Target="ENABLE_POSTGREY" Default="0" Mode="" Description="Greylist&#13;&#10;&amp;lt;br&amp;gt; 1 = Enable&#13;&#10;&amp;lt;br&amp;gt; 0 = Disable" Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
   <Config Name="Fail2Ban" Target="ENABLE_FAIL2BAN" Default="0" Mode="" Description="Fail2Ban&#13;&#10;&amp;lt;br&amp;gt; 1 = Enable&#13;&#10;&amp;lt;br&amp;gt; 0 = Disable" Type="Variable" Display="advanced" Required="false" Mask="false">0</Config>
   <Config Name="ClamAV" Target="ENABLE_CLAMAV" Default="1" Mode="" Description="ClamAV&#13;&#10;&amp;lt;br&amp;gt; 1 = Enable&#13;&#10;&amp;lt;br&amp;gt; 0 = Disable" Type="Variable" Display="advanced" Required="false" Mask="false">1</Config>
